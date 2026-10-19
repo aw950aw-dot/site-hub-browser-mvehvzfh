@@ -298,9 +298,18 @@ public class MainActivity extends Activity {
                 }
             });
 
-            // Scroll listener for hiding/showing top toolbar
+            // Scroll listener for hiding/showing top toolbar and pull-to-refresh
             wv.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                 if (index != currentIndex) return;
+
+                // Pull to refresh trigger: when scrolled to the very top and pulling further down (scrollY <= 0, oldScrollY <= 0)
+                if (scrollY <= 0 && oldScrollY <= 0) {
+                    // Detect overscroll/pull down gesture intent
+                    if (v.getScrollY() < -30) {
+                        wv.reload();
+                    }
+                }
+
                 float diff = scrollY - lastScrollY;
                 if (diff > 15 && isToolbarVisible && scrollY > 100) {
                     hideToolbar();

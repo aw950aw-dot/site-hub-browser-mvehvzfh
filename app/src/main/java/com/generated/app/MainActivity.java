@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -75,7 +76,6 @@ public class MainActivity extends Activity {
             Uri data = intent.getData();
             if (data != null) {
                 String url = data.toString();
-                // Open in current or new webview
                 if (webViews != null && !webViews.isEmpty()) {
                     webViews.get(currentIndex).loadUrl(url);
                 }
@@ -243,7 +243,6 @@ public class MainActivity extends Activity {
             settings.setDatabaseEnabled(true);
             settings.setCacheMode(WebSettings.LOAD_DEFAULT);
             settings.setLoadsImagesAutomatically(true);
-            settings.setAppCacheEnabled(true);
             settings.setSupportZoom(true);
             settings.setBuiltInZoomControls(true);
             settings.setDisplayZoomControls(false);
@@ -259,7 +258,6 @@ public class MainActivity extends Activity {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
                     if (url.startsWith("http://") || url.startsWith("https://")) {
-                        // Check if URL belongs to one of our managed domains or standard navigation
                         view.loadUrl(url);
                         return true;
                     }
@@ -360,7 +358,6 @@ public class MainActivity extends Activity {
         tabViews.get(currentIndex).setSelected(true);
         urlInput.setText(currentWv.getUrl() != null ? currentWv.getUrl() : sites.get(currentIndex).getUrl());
 
-        // Ensure selected tab is visible in horizontal scroll
         final LinearLayout selectedTab = tabViews.get(currentIndex);
         tabsScroll.smoothScrollTo(selectedTab.getLeft() - 100, 0);
         showToolbar();
@@ -418,5 +415,3 @@ public class MainActivity extends Activity {
         }
     }
 }
-=====android:scaleType=====
-ImageView.ScaleType.CENTER_INSIDE

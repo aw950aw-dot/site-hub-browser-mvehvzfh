@@ -244,7 +244,6 @@ public class MainActivity extends Activity {
             
             // Ultra-fast loading configurations
             settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-            settings.setAppCacheEnabled(true);
             settings.setLoadsImagesAutomatically(true);
             settings.setBlockNetworkImage(false);
             settings.setSupportZoom(true);
@@ -252,7 +251,6 @@ public class MainActivity extends Activity {
             settings.setDisplayZoomControls(false);
             settings.setUseWideViewPort(true);
             settings.setLoadWithOverviewMode(true);
-            settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
 
             if (desktopMode) {
                 settings.setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");

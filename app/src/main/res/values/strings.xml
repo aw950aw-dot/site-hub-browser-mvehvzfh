@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">מרכז האתרים</string>
+    <string name="back">הקודם</string>
+    <string name="forward">הבא</string>
+    <string name="refresh">רענן</string>
+    <string name="home">ראשי</string>
+    <string name="url_hint">הקלד כתובת אתר וחפש...</string>
+    <string name="settings">הגדרות</string>
+    <string name="settings_title">הגדרות דפדפן</string>
+    <string name="clear_cache">נקה זיכרון מטמון ועוגיות</string>
+    <string name="cache_cleared">הנתונים נוקו בהצלחה</string>
+    <string name="desktop_mode">מצב מחשב (Desktop Mode)</string>
+    <string name="link_handling_title">פתיחת קישורים חיצוניים</string>
+    <string name="link_handling_desc">כדי שקישורים יפתחו אוטומטית באפליקציה, יש לוודא בהגדרות המכשיר (אפליקציות -> ברירת מחדל -> פתיחת קישורים) שהאפליקציה מוגדרת לפתוח קישורים נתמכים.</string>
+    <string name="close">סגור</string>
+</resources>

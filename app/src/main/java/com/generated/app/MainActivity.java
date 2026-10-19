@@ -241,13 +241,18 @@ public class MainActivity extends Activity {
             settings.setJavaScriptEnabled(true);
             settings.setDomStorageEnabled(true);
             settings.setDatabaseEnabled(true);
-            settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+            
+            // Ultra-fast loading configurations
+            settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+            settings.setAppCacheEnabled(true);
             settings.setLoadsImagesAutomatically(true);
+            settings.setBlockNetworkImage(false);
             settings.setSupportZoom(true);
             settings.setBuiltInZoomControls(true);
             settings.setDisplayZoomControls(false);
             settings.setUseWideViewPort(true);
             settings.setLoadWithOverviewMode(true);
+            settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
 
             if (desktopMode) {
                 settings.setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
@@ -276,6 +281,8 @@ public class MainActivity extends Activity {
                 @Override
                 public void onPageFinished(WebView view, String url) {
                     super.onPageFinished(view, url);
+                    // Speed up future loads by enabling default cache mode after first load
+                    view.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
                     if (index == currentIndex) {
                         urlInput.setText(url);
                         progressBar.setVisibility(View.GONE);
@@ -302,9 +309,8 @@ public class MainActivity extends Activity {
             wv.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                 if (index != currentIndex) return;
 
-                // Pull to refresh trigger: when scrolled to the very top and pulling further down (scrollY <= 0, oldScrollY <= 0)
+                // Pull to refresh trigger: when scrolled to the very top and pulling further down
                 if (scrollY <= 0 && oldScrollY <= 0) {
-                    // Detect overscroll/pull down gesture intent
                     if (v.getScrollY() < -30) {
                         wv.reload();
                     }

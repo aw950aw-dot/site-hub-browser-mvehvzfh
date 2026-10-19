@@ -132,8 +132,8 @@ public class MainActivity extends Activity {
         navBar.setPadding(12, 4, 12, 4);
         navBar.setBackgroundColor(0xFFFFFFFF);
 
-        btnBack = createToolbarButton(android.R.drawable.ic_media_rewind, getString(R.string.back));
-        btnForward = createToolbarButton(android.R.drawable.ic_media_fast_forward, getString(R.string.forward));
+        btnBack = createToolbarButton(android.R.drawable.ic_menu_revert, getString(R.string.back));
+        btnForward = createToolbarButton(android.R.drawable.ic_menu_send, getString(R.string.forward));
         btnRefresh = createToolbarButton(android.R.drawable.ic_menu_rotate, getString(R.string.refresh));
 
         btnBack.setOnClickListener(v -> {
